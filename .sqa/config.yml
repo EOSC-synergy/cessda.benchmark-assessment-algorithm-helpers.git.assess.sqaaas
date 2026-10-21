@@ -1,0 +1,52 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: fix/updatego
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/cessda/cessda.benchmark-assessment-algorithm-helpers:
+      branch: main
+      repo: https://github.com/cessda/cessda.benchmark-assessment-algorithm-helpers.git
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/cessda/cessda.benchmark-assessment-algorithm-helpers git:
+        commands:
+        - /usr/bin/env sh .sqa/script.claret_savvy_dolphin.sh
+        container: qc.acc_strawberry_motivated_whale
+  QC.Doc:
+    repos:
+      github.com/cessda/cessda.benchmark-assessment-algorithm-helpers find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.cardamom_sweet_hawk.sh
+        container: qc.doc_byzantium_reliable_toucan
+      github.com/cessda/cessda.benchmark-assessment-algorithm-helpers git:
+        commands:
+        - /usr/bin/env sh .sqa/script.carmine_relaxed_ibis.sh
+        container: qc.doc_cloud_studious_sphinx
+      github.com/cessda/cessda.benchmark-assessment-algorithm-helpers markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.kiwi_confident_gibbon.sh
+        container: qc.doc_byzantium_apprehensive_groundhog
+  QC.Lic:
+    repos:
+      github.com/cessda/cessda.benchmark-assessment-algorithm-helpers licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.mint_amused_cockatoo.sh
+        container: qc.lic_cherry_alert_raccoon
+  QC.Met:
+    repos:
+      github.com/cessda/cessda.benchmark-assessment-algorithm-helpers cff-converter-python:
+        commands:
+        - /usr/bin/env sh .sqa/script.cyan_respectful_bullfrog.sh
+        container: qc.met_dawn_practical_moose
+  QC.Ver:
+    repos:
+      github.com/cessda/cessda.benchmark-assessment-algorithm-helpers get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.pearl_passionate_badger.sh
+        container: qc.ver_burgundy_vigilant_beaver
+timeout: 5400
